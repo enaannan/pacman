@@ -10,14 +10,14 @@ TEST_CASE("Exercise 11x : Make sure running exercise tests work", "[11]") {
 }
 
 // HINT: To enable a test remove [.] from the tags on the test
-TEST_CASE("Exercise 111 : Enable the test and make it green", "[.][11]") {
-  REQUIRE(true == false);
+TEST_CASE("Exercise 111 : Enable the test and make it green", "[11]") {
+  REQUIRE(true == true);
 }
 
 // HINT: https://github.com/catchorg/Catch2/blob/v2.x/docs/assertions.md
-TEST_CASE("Exercise 112 : Make both asserts run (distinguish between REQUIRE and CHECK in Catch2)", "[.][11]") {
-  REQUIRE(true == false);
-  CHECK(false == true);
+TEST_CASE("Exercise 112 : Make both asserts run (distinguish between REQUIRE and CHECK in Catch2)", "[11]") {
+  CHECK(false == false);
+  CHECK(false == false);
 }
 
 } // namespace exercises_11

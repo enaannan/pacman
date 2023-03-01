@@ -11,6 +11,7 @@
 #include "Pinky.hpp"
 #include "Score.hpp"
 #include "SuperPellets.hpp"
+#include "Clyde.hpp"
 
 namespace pacman {
 
@@ -20,6 +21,7 @@ struct GameState {
   Blinky blinky;
   Pinky pinky;
   Inky inky;
+  Clyde clyde;
 
   PacMan pacMan;
   PacManAI pacManAI;

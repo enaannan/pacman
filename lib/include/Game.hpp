@@ -14,7 +14,7 @@ private:
   Canvas canvas;
   GameState gameState;
 
-  void processEvents(InputState & inputState);
+  void processEvents( InputState & inputState);
 };
 
 } // namespace pacman

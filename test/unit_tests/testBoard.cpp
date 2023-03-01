@@ -2,7 +2,10 @@
 #include "catch2/catch.hpp"
 
 // These tests assume a static game board.
-
+TEST_CASE("Is wall", "[board]"){
+  REQUIRE(pacman::isWall(pacman::GridPosition{0,0})); //wall
+  REQUIRE_FALSE(pacman::isWall(pacman::GridPosition{ 1, 1 })); // pellet
+}
 TEST_CASE("Is walkable for Pac-Man", "[board]") {
   REQUIRE_FALSE(pacman::isWalkableForPacMan(pacman::GridPosition{ 0, 0 }));   // wall
   REQUIRE_FALSE(pacman::isWalkableForPacMan(pacman::GridPosition{ 27, 0 }));  // wall
