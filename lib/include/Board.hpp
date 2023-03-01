@@ -19,6 +19,8 @@ GridPosition teleport(GridPosition point);
 std::vector<GridPosition> initialPelletPositions();
 std::vector<GridPosition> initialSuperPelletPositions();
 
+bool isWall(GridPosition position);
+
 inline Position penDoorPosition() {
   return { 13, 11 };
 }

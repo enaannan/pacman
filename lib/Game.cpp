@@ -5,6 +5,7 @@
 
 namespace pacman {
 
+// draws the current game state on screen
 void Game::run() {
   const std::chrono::milliseconds delta_time(1000 / 60);
   std::chrono::milliseconds accumulator(0);
@@ -30,7 +31,7 @@ void Game::run() {
   }
 }
 
-void Game::processEvents(InputState & inputState) {
+void Game::processEvents( InputState & inputState) {
   const auto event = canvas.pollEvent();
 
   if (!event)

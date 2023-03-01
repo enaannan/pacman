@@ -2,6 +2,7 @@
 
 #include "Board.hpp"
 #include "Random.hpp"
+#include <iostream>
 
 namespace pacman {
 
@@ -14,19 +15,44 @@ void PacManAI::reset() {
 // You will implement it as part of module 24.
 GridPosition PacManAI::pelletClosestToPacman(GridPosition pacmanGridPosition  [[maybe_unused]],
                                              std::vector<GridPosition> & pellets [[maybe_unused]]) {
-  return {0, 0};
+  
+   GridPosition closestPellet ={0,0};
+  double closestDistance = std::numeric_limits<double>::infinity();
+ 
+
+  for(const auto & pellet : pellets){
+    const auto distance = positionDistance(pacmanGridPosition, pellet);
+  if (distance < closestDistance) {
+    closestPellet = pellet;
+    closestDistance = distance;
+  }
+  }
+  
+  return closestPellet;
 }
 
 // This function is not yet implemented.
 // You will implement it as part of module 21.
 bool PacManAI::isValidMove(const Move & move [[maybe_unused]]) {
+  if(move.direction == oppositeDirection(suggested_direction))
   return false;
+
+  return isWalkableForPacMan(move.position);
 }
 
 // This function is not yet implemented.
 // You will implement it as part of module 21. and 24.
 Direction PacManAI::optimalDirection(const std::array<Move, 4> & moves [[maybe_unused]]) {
-  return Direction::NONE;
+double shortestDistance =  std::numeric_limits<double>::infinity();
+Direction optimalDirection = Direction::LEFT;
+
+for (const auto move : moves){
+ if (move.distanceToTarget < shortestDistance){
+  shortestDistance = move.distanceToTarget;
+  optimalDirection= move.direction;
+ }
+}
+return optimalDirection;
 }
 
 // This function is not yet implemented.

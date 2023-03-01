@@ -59,13 +59,16 @@ static Cell cellAtPosition(GridPosition point) {
   return Cell(board[point.y][point.x]);
 }
 
+bool isWall(GridPosition position){
+  return cellAtPosition(position) == Cell::wall;
+}
+
 bool isWalkableForPacMan(GridPosition point) {
-  return cellAtPosition(point) != Cell::wall && cellAtPosition(point) != Cell::pen;
+  return !isWall(point) && cellAtPosition(point) != Cell::pen;
 }
 
 bool isWalkableForGhost(GridPosition target_position, GridPosition current_position, bool isEyes) {
-  const Cell cell = cellAtPosition(target_position);
-  if (cell == Cell::wall)
+  if (isWall(target_position))
     return false;
   return isEyes || isInPen(current_position) || !isInPen(target_position);
 }
@@ -111,6 +114,8 @@ GridPosition teleport(GridPosition point) {
 
 std::vector<GridPosition> initialPelletPositions() {
   std::vector<GridPosition> positions;
+
+positions.reserve((ROWS * COLUMNS) / 3);
 
   for (std::size_t row = 0; row < ROWS; row++) {
     for (std::size_t column = 0; column < COLUMNS; column++) {
